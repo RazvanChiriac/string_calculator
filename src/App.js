@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import "./App.css";
 
-export function add(numbers) {
+export function Add(numbers) {
   return numbers;
 }
 
@@ -18,7 +18,7 @@ function App() {
           onChange={(text) => setValue(text.target.value)}
           value={value}
         />
-        <button onClick={() => setSubmittedValue(add(value))}>Calculate</button>
+        <button onClick={() => setSubmittedValue(Add(value))}>Calculate</button>
         <h2>Result: {submmitedValue} </h2>
       </header>
     </div>
