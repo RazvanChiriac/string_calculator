@@ -3,7 +3,20 @@ import React, { useState } from "react";
 import "./App.css";
 
 export function Add(numbers) {
-  return parseInt(numbers);
+  if (numbers != "") {
+    let sum = 0;
+    if (numbers.split(",").map(Number).length <= 2) {
+      numbers
+        .split(",")
+        .map(Number)
+        .forEach((number) => {
+          sum = number + sum;
+        });
+      return sum;
+    } else {
+      return "Error: The function can handle only up to two numbers";
+    }
+  } else return 0;
 }
 
 function App() {
