@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import "./App.css";
 
 export function Add(numbers) {
-  return numbers;
+  return parseInt(numbers);
 }
 
 function App() {
