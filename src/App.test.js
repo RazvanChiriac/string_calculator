@@ -30,4 +30,10 @@ describe("Add", () => {
       Add("-10,50,-25,-49");
     }).toThrow("negatives not allowed -10,-25,-49");
   });
+
+  it("should ignore numbers bigger than 1000", () => {
+    expect(Add("2,1001")).toBe(2);
+    expect(Add("1,5,5000")).toBe(6);
+    expect(Add("5,500,1005")).toBe(505);
+  });
 });
