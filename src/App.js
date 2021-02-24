@@ -9,6 +9,13 @@ export function Add(numbers) {
   if (numbers != "") {
     let extractedNumbers = numbers.split(",").map(Number);
 
+    if (numbers.substring(0, 2) == "//") {
+      extractedNumbers = numbers
+        .substring(2)
+        .split(numbers.substring(2, 3))
+        .map(Number);
+    }
+
     extractedNumbers.forEach((number) => {
       if (number <= 1000) {
         sum = number + sum;
