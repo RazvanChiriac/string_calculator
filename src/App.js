@@ -4,13 +4,23 @@ import "./App.css";
 
 export function Add(numbers) {
   let sum = 0;
+  let negativeNumbers = [];
+
   if (numbers != "") {
     let extractedNumbers = numbers.split(",").map(Number);
+
     extractedNumbers.forEach((number) => {
       sum = number + sum;
+      if (number < 0) {
+        negativeNumbers.push(number);
+      }
     });
   }
-  return sum;
+  if (negativeNumbers.length == 0) {
+    return sum;
+  } else {
+    throw "negatives not allowed " + negativeNumbers;
+  }
 }
 
 function App() {
