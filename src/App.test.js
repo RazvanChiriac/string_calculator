@@ -36,4 +36,13 @@ describe("Add", () => {
     expect(Add("1,5,5000")).toBe(6);
     expect(Add("5,500,1005")).toBe(505);
   });
+
+  it("should support different type of delimiters", () => {
+    expect(Add("//;\n1;2")).toBe(3);
+    expect(Add("//!\n3!2!0")).toBe(5);
+    expect(Add("//?\n100?200?10?20")).toBe(330);
+    expect(() => {
+      Add("//!\n-100!200!10!20");
+    }).toThrow("negatives not allowed -100");
+  });
 });
