@@ -3,14 +3,14 @@ import React, { useState } from "react";
 import "./App.css";
 
 export function Add(numbers) {
+  let sum = 0;
   if (numbers != "") {
     let extractedNumbers = numbers.split(",").map(Number);
-    let sum = 0;
     extractedNumbers.forEach((number) => {
       sum = number + sum;
     });
-    return sum;
-  } else return 0;
+  }
+  return sum;
 }
 
 function App() {
