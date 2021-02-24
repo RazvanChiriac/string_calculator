@@ -4,14 +4,12 @@ import "./App.css";
 
 export function Add(numbers) {
   if (numbers != "") {
+    let extractedNumbers = numbers.split(",").map(Number);
     let sum = 0;
-    if (numbers.split(",").map(Number).length <= 2) {
-      numbers
-        .split(",")
-        .map(Number)
-        .forEach((number) => {
-          sum = number + sum;
-        });
+    if (extractedNumbers.length <= 2) {
+      extractedNumbers.forEach((number) => {
+        sum = number + sum;
+      });
       return sum;
     } else {
       return "Error: The function can handle only up to two numbers";
