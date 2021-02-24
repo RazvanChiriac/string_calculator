@@ -2,18 +2,25 @@ import React, { useState } from "react";
 
 import "./App.css";
 
+function extractNumbersFromDelimiters(numbers) {
+  let extractedNumbers = numbers
+    .substring(2)
+    .split(numbers.substring(2, 3))
+    .map(Number);
+  return extractedNumbers;
+}
+
 export function Add(numbers) {
   let sum = 0;
   let negativeNumbers = [];
 
   if (numbers != "") {
-    let extractedNumbers = numbers.split(",").map(Number);
+    let extractedNumbers = [];
 
     if (numbers.substring(0, 2) == "//") {
-      extractedNumbers = numbers
-        .substring(2)
-        .split(numbers.substring(2, 3))
-        .map(Number);
+      extractedNumbers = extractNumbersFromDelimiters(numbers);
+    } else {
+      extractedNumbers = numbers.split(",").map(Number);
     }
 
     extractedNumbers.forEach((number) => {
@@ -25,6 +32,7 @@ export function Add(numbers) {
       }
     });
   }
+
   if (negativeNumbers.length == 0) {
     return sum;
   } else {
