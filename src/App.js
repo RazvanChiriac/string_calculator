@@ -6,14 +6,10 @@ export function Add(numbers) {
   if (numbers != "") {
     let extractedNumbers = numbers.split(",").map(Number);
     let sum = 0;
-    if (extractedNumbers.length <= 2) {
-      extractedNumbers.forEach((number) => {
-        sum = number + sum;
-      });
-      return sum;
-    } else {
-      return "Error: The function can handle only up to two numbers";
-    }
+    extractedNumbers.forEach((number) => {
+      sum = number + sum;
+    });
+    return sum;
   } else return 0;
 }
 
