@@ -10,9 +10,11 @@ export function Add(numbers) {
     let extractedNumbers = numbers.split(",").map(Number);
 
     extractedNumbers.forEach((number) => {
-      sum = number + sum;
-      if (number < 0) {
-        negativeNumbers.push(number);
+      if (number <= 1000) {
+        sum = number + sum;
+        if (number < 0) {
+          negativeNumbers.push(number);
+        }
       }
     });
   }
