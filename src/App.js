@@ -32,7 +32,6 @@ export function Add(numbers) {
       }
     });
   }
-
   if (negativeNumbers.length === 0) {
     return sum;
   } else {
@@ -55,12 +54,15 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <input
-          type="text"
+        <textarea
           onChange={(text) => setValue(text.target.value)}
           value={value}
+          rows={5}
+          cols={40}
         />
-        <button onClick={() => generateResult()}>Calculate</button>
+        <button style={{ marginTop: "2%" }} onClick={() => generateResult()}>
+          Calculate
+        </button>
 
         <h2>Result: {result} </h2>
       </header>
