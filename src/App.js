@@ -14,10 +14,10 @@ export function Add(numbers) {
   let sum = 0;
   let negativeNumbers = [];
 
-  if (numbers != "") {
+  if (numbers !== "") {
     let extractedNumbers = [];
 
-    if (numbers.substring(0, 2) == "//") {
+    if (numbers.substring(0, 2) === "//") {
       extractedNumbers = extractNumbersFromDelimiters(numbers);
     } else {
       extractedNumbers = numbers.split(",").map(Number);
@@ -33,16 +33,24 @@ export function Add(numbers) {
     });
   }
 
-  if (negativeNumbers.length == 0) {
+  if (negativeNumbers.length === 0) {
     return sum;
   } else {
-    throw "negatives not allowed " + negativeNumbers;
+    throw new Error("negatives not allowed " + negativeNumbers);
   }
 }
 
 function App() {
   const [value, setValue] = useState("");
-  const [submmitedValue, setSubmittedValue] = useState("");
+  const [result, setResult] = useState("");
+
+  function generateResult() {
+    try {
+      setResult(Add(value));
+    } catch (err) {
+      setResult(err.message);
+    }
+  }
 
   return (
     <div className="App">
@@ -52,8 +60,9 @@ function App() {
           onChange={(text) => setValue(text.target.value)}
           value={value}
         />
-        <button onClick={() => setSubmittedValue(Add(value))}>Calculate</button>
-        <h2>Result: {submmitedValue} </h2>
+        <button onClick={() => generateResult()}>Calculate</button>
+
+        <h2>Result: {result} </h2>
       </header>
     </div>
   );
